@@ -1,0 +1,5 @@
+**/target/
+**/Cargo.lock
+
+
+os/.gdb_history
