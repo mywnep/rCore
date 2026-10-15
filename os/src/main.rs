@@ -8,4 +8,8 @@
 // handle some items required by rust
 mod lang_items;
 
-fn main() {}
+// a placeholder entry fn, loop & return !
+#[unsafe(no_mangle)]
+extern "C" fn _start() -> ! {
+    loop {}
+}
