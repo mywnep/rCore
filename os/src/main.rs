@@ -6,10 +6,17 @@
 // a self-declared entry is required, use `#[unsafe(no_mangle)]` to prevent this entry being mangled
 #![no_main]
 // handle some items required by rust
+mod console;
 mod lang_items;
+mod sbi;
+mod syscall;
 
-// a placeholder entry fn, loop & return !
+use crate::sbi::shutdown;
+
+core::arch::global_asm!(include_str!("entry.asm"));
+
+// a entry that can ecall and exit
 #[unsafe(no_mangle)]
-extern "C" fn _start() -> ! {
-    loop {}
+pub fn rust_main() -> ! {
+    shutdown()
 }
